@@ -3,19 +3,26 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Verdana", sans-serif;
+    
+    
+}
+.body{
+    background-color: beige;
+
 }
 
 .header {
-    background-color: beige;
     width: 100%;
     height: 100vh;
 }
+
+
 
 .side-nav {
     background-color: rgb(24, 161, 210);
     width: 250px;
     height: 100vh;
-    position: fixed;
+
     top: 0;
     left: 0;
     padding: 20px 30px;
