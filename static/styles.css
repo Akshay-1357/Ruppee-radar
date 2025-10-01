@@ -1,42 +1,59 @@
-*{
-    margin : 0;
-    padding : 0;
-    box-sizing : border-box;
-    font-family: "Lucida Console", "Courier New", monospace;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Verdana", sans-serif;
 }
-.header{
+
+.header {
     background-color: beige;
     width: 100%;
     height: 100vh;
 }
-.side-nav{
+
+.side-nav {
     background-color: rgb(24, 161, 210);
     width: 250px;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    padding : 20px 30px;
+    padding: 20px 30px;
 }
-.logo
-{
-    display : block;
-    padding : 0px;
+
+.logo {
+    display: block;
+    padding: 0px;
 }
-.logo-item{
+
+.logo-item {
     width: 200px;
 }
 
-.nav-links{
+/* ✅ Fixed selector */
+.nav-links {
     list-style: none;
-    position : relative
+    position: relative;
 }
-.nav links li{
-    padding : 15px 0;
- 
+
+.nav-links li {
+    padding: 15px 0;
 }
-.nav-links li a{
+
+.nav-links li a {
     text-decoration: none;
-    color : white;
-    padding : 1px 10px;
+    color: white;
+    padding: 15px 10px;
+
+    /* makes icon + text stay in same row */
+    display: flex;            
+    align-items: bottom;
 }
+
+.nav-links li a i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+
+
