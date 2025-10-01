@@ -1,0 +1,8 @@
+{% extends "layout.html" %}
+{% block title %}Expense{% endblock %}
+{% block main %}
+    <h1>Expense Tracker</h1>
+    <form method="post" action="/add-expense">
+        <button type="submit" class="btn btn-primary">Add Expense</button>
+    </form>
+{% endblock %}

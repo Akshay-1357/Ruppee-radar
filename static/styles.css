@@ -1,0 +1,42 @@
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.header{
+    background-color: beige;
+    width: 100%;
+    height: 100vh;
+}
+.side-nav{
+    background-color: rgb(24, 161, 210);
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding : 20px 30px;
+}
+.logo
+{
+    display : block;
+    padding : 0px;
+}
+.logo-item{
+    width: 200px;
+}
+
+.nav-links{
+    list-style: none;
+    position : relative
+}
+.nav links li{
+    padding : 15px 0;
+ 
+}
+.nav-links li a{
+    text-decoration: none;
+    color : white;
+    padding : 1px 10px;
+}
