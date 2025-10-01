@@ -7,6 +7,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///budjet.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+categories = ['Food','Social Life', "Pets","Transport","Health","Education","Shopping","Bills & Fees","Gifts","Others"]
 
 # Models
 class Expense(db.Model):
@@ -36,15 +37,15 @@ def home():
 @app.route('/expense', methods=['GET', 'POST'])
 def add_expense():
     if request.method == 'POST':
-        name = request.form['name']
+        category = request.form['category']
         amount = request.form['amount']
-        if name and amount:
-            new_expense = Expense(name=name, amount=float(amount))
+        if category and amount:
+            new_expense = Expense(name=category, amount=float(amount))
             db.session.add(new_expense)
             db.session.commit()
-            return redirect(url_for('add_expense'))
+            return redirect(url_for('expense'))
     all_expenses = Expense.query.all()
-    return render_template('expense.html', expenses=all_expenses)
+    return render_template('expense.html', expenses=all_expenses, cats = categories)
 
 # Income page
 @app.route('/income', methods=['GET', 'POST'])

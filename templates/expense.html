@@ -2,16 +2,22 @@
 {% block title %}Expense{% endblock %}
 {% block main %}
     <h1>Expense Tracker</h1>
-    <form method="post" action="/add-expense">
+    <form method="post" action="/expense">
         <div class="mb-3">
             <label for="amount" class="form-label">Amount:</label>
-            <input type="number" class="form-control" id="amount" name="amount" required>
+            <input type="number" class="form-control" id="amount" name="amount" required autocomplete="off" autofocus>
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category:</label>
-            <input type="text" class="form-control" id="category" name="category" required>
+            <select id="category" name = "category" required>
+                <option value="" disabled selected>Select a category</option>
+
+                {% for c in cats %}
+                    <option value ="{{ c }}">{{ c }}</option>
+                {% endfor %}
+            </select>
         </div>
        
-        <button type="submit" class="btn btn-primary">Add Expense</button>
+        <button type="submit" class="btn btn-primary">Add Expense   <i  class="fi fi-rr-check"></i></button>
     </form>
 {% endblock %}
