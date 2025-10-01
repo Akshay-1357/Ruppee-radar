@@ -28,9 +28,9 @@ with app.app_context():
 
 # Routes
 
-@app.route('/')
+@app.route('/dashboard')
 def home():
-    return redirect(url_for('add_expense'))
+    return render_template('dashboard.html')
 
 # Expense page
 @app.route('/expense', methods=['GET', 'POST'])
@@ -63,6 +63,16 @@ def add_income():
 @app.route('/layout')
 def test_layout():
     return render_template('test.html')
+
+@app.route('/transactions')
+def transactions():
+    all_expenses = Expense.query.all()
+    all_income = Income.query.all()
+    return render_template('transactions.html', expenses=all_expenses, incomes=all_income)
+
+@app.route('/graph')
+def Graph():
+    return render_template('graph.html')
 
 
 if __name__ == '__main__':
