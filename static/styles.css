@@ -2,7 +2,7 @@
     margin : 0;
     padding : 0;
     box-sizing : border-box;
-    font-family : 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Lucida Console", "Courier New", monospace;
 }
 .header{
     background-color: beige;
@@ -21,8 +21,22 @@
 .logo
 {
     display : block;
-    padding : 135px;
+    padding : 0px;
 }
 .logo-item{
-    width: 150px;
+    width: 200px;
+}
+
+.nav-links{
+    list-style: none;
+    position : relative
+}
+.nav links li{
+    padding : 15px 0;
+ 
+}
+.nav-links li a{
+    text-decoration: none;
+    color : white;
+    padding : 1px 10px;
 }
