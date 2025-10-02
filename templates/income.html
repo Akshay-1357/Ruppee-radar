@@ -42,11 +42,15 @@
         </thead>
         <tbody id="incomeTableBody">
             {% for inc in incomes %}
-            <tr>
+
+                
+                <tr>
                 <td>{{ inc.source }}</td>
                 <td>{{ inc.amount }}</td>
                 <td>{{ inc.date }}</td>
-            </tr>
+                </tr>
+                
+            
             {% endfor %}
         </tbody>
     </table>

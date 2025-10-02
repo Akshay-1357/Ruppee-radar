@@ -70,7 +70,7 @@ def add_income():
 
 @app.route('/income_data', methods=['GET'])
 def income_data():
-    all_income = Income.query.order_by(Income.date.desc()).all()
+    all_income = Income.query.order_by(Income.date.desc() ).limit(5).all()
     income_list = []
     for inc in all_income:
         income_list.append({
