@@ -35,7 +35,7 @@ def home():
 
 # Expense page
 @app.route('/expense', methods=['GET', 'POST'])
-def add_expense():
+def expense():
     if request.method == 'POST':
         category = request.form['category']
         amount = request.form['amount']
