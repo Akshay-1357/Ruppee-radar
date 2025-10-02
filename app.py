@@ -10,13 +10,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///budjet.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 categories = ['Food','Social Life', "Pets","Transport","Health","Education","Shopping","Bills & Fees","Gifts","Others"]
-sources = ['Investments','Salary','Savings','Others']
+sources = ['Investments 💼', 'Salary 💰', 'Savings 🏦', 'Others 🔧']
+
 
 # Models
 class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     amount = db.Column(db.Float, nullable=False)
+    date = db.Column(db.Date, default= datetime.utcnow,nullable=False)
 
     
 
@@ -43,8 +45,9 @@ def expense():
     if request.method == 'POST':
         category = request.form['category']
         amount = request.form['amount']
+        date = request.form['date']
         if category and amount:
-            new_expense = Expense(name=category, amount=float(amount))
+            new_expense = Expense(name=category, amount=float(amount),date= datetime.strptime(date, '%Y-%m-%d'))
             db.session.add(new_expense)
             db.session.commit()
             return redirect(url_for('expense'))
@@ -63,7 +66,7 @@ def add_income():
             db.session.add(new_income)
             db.session.commit()
             return redirect(url_for('add_income'))
-    all_income =  Income.query.order_by(Income.date.desc()).all()
+    all_income =  Income.query.order_by(Income.date.desc()).limit(5).all()
     return render_template('income.html', incomes=all_income , srcs = sources)
 
 
