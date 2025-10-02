@@ -5,7 +5,9 @@
     font-family: "Verdana", sans-serif;  
 }
 .fhead{
-    font-family: "Lucida Console", "Courier New", monospace
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 
 }
 
@@ -57,3 +59,17 @@
     display: flex;
     
 }
+.card {
+    background: rgba(255, 255, 255, 0.2); /* semi-transparent */
+    backdrop-filter: blur(10px);          /* glass effect */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* darker and more visible */
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth hover effect */
+}
+.card:hover {
+    transform: translateY(-5px);           /* lift card slightly */
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4); /* deeper shadow */
+}
+
