@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -64,6 +65,21 @@ def add_income():
             return redirect(url_for('add_income'))
     all_income =  Income.query.order_by(Income.date.desc()).all()
     return render_template('income.html', incomes=all_income , srcs = sources)
+
+
+
+@app.route('/income_data', methods=['GET'])
+def income_data():
+    all_income = Income.query.order_by(Income.date.desc()).all()
+    income_list = []
+    for inc in all_income:
+        income_list.append({
+            'source': inc.source,
+            'amount': inc.amount,
+            'date': inc.date.strftime('%Y-%m-%d')  # Format date as string
+        })
+    return jsonify(income_list)
+
 
 @app.route('/layout')
 def test_layout():

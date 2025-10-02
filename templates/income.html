@@ -4,16 +4,16 @@
 
 {% block main %}
 <h1>Track Your Income</h1>
-<div >
-    <div class = "d-flex justify-content-center align-items-center vh-45">
+<div>
+    <div class="d-flex justify-content-center align-items-center vh-45">
         <div class="card p-4" style="width: 400px; height: auto;">
 
-            <form method="post" action="/income">
+            <form id="incomeForm" method="post" action="/income">
                 <div class="mb-3">
-                    <label class="fhead" for ="amount" class="form-label">Income:</label>
-                    <input type ="number" class = "form-control" id ="inamt" name ="income" required autofocus autocomplete="off">
+                    <label class="fhead" for="inamt" class="form-label">Income:</label>
+                    <input type="number" class="form-control" id="inamt" name="income" required autofocus autocomplete="off">
                 </div>
-                <div class = "mb-3">
+                <div class="mb-3">
                     <select id="source" name="source" required>
                         <option value="" disabled selected>Select Source</option>
                         {% for s in srcs %}
@@ -22,37 +22,37 @@
                     </select>
                 </div>
                 <div class="d-flex gap-2 mb-3">
-                    <input name= "date" type="date" value="2025-10-02" required/>
-                    <button type="submit" class="btn btn-primary mb-3 ">Add Income <i class="fi fi-rr-check"></i></button>
+                    <input name="date" type="date" value="2025-10-02" required />
+                    <button type="submit" class="btn btn-primary mb-3">Add Income <i class="fi fi-rr-check"></i></button>
                 </div>
             </form>
 
-
         </div>
-        
-</div>
-<div class ="tb-container">
-    <table class="minimalist-table ">
-    <thead>
-        <tr>
-        <th>Source</th>
-        <th>Amount</th>
-        <th>Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for inc in incomes %}
-        <tr>
-            <td>{{inc.source}}</td>
-            <td>{{inc.amount}}</td>
-            <td>{{inc.date}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+    </div>
 </div>
 
+<div class="tb-container">
+    <table class="minimalist-table">
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="incomeTableBody">
+            {% for inc in incomes %}
+            <tr>
+                <td>{{ inc.source }}</td>
+                <td>{{ inc.amount }}</td>
+                <td>{{ inc.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
+<script src="{{ url_for('static', filename='js/tbincome.js') }}"></script>
 
 {% endblock %}
+
