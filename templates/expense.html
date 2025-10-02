@@ -1,8 +1,58 @@
 {% extends "layout.html" %}
 {% block title %}Expense{% endblock %}
 {% block main %}
-    <h1>Expense Tracker</h1>
-    <form method="post" action="/add-expense">
-        <button type="submit" class="btn btn-primary">Add Expense</button>
-    </form>
+<h1 class="fhead">Expense Tracker</h1>
+<div class="container" style="margin-top: 100px">
+    <div class="row g-4">
+        <div class="d-flex justify-content-center align-items-center vh-45">
+            <div class="card p-4" style="width: 400px; height: auto;">
+
+                <form method="post" action="/expense">
+                    <div class="mb-3">
+                        <label class="fhead" for="amount" class="form-label">Amount:</label>
+                        <input type="number" class="form-control" id="amount" name="amount" required autocomplete="off" autofocus>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category:</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            {% for c in cats %}
+                                <option value="{{ c }}">{{ c }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mb-3">Add Expense <i class="fi fi-rr-check"></i></button>
+                </form>
+
+                <!-- Emoji Boxes -->
+                <div id="emoji-container" class="d-flex flex-wrap gap-2">
+                    {% set emojis = {
+                        'Food':'🍔',
+                        'Social Life':'🎉',
+                        'Pets':'🐶',
+                        'Transport':'🚌',
+                        'Health':'💊',
+                        'Education':'📚',
+                        'Shopping':'🛍️',
+                        'Bills & Fees':'💳',
+                        'Gifts':'🎁',
+                        'Others':'❓'
+                    } %}
+                    {% for c in cats %}
+                        <div class="emoji-box" data-category="{{ c }}">
+                            {{ emojis[c] }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="recent-transactions" style="display:flex; gap:10px; margin-top:20px;"></div>
+<script src="{{ url_for('static', filename='js/expensetracker.js') }}"></script>
+
 {% endblock %}
+
