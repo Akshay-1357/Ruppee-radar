@@ -88,4 +88,29 @@
     opacity: 1;      /* highlight selected */
     transform: scale(1.2);
 }
+.minimalist-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-top: none;
+  border-left: none;
+}
+
+.minimalist-table th, .minimalist-table td {
+  padding: 8px 12px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.minimalist-table th:last-child, .minimalist-table td:last-child {
+  border-right: none; /* remove last vertical line */
+}
+
+.minimalist-table tr:last-child td {
+  border-bottom: none; /* remove last horizontal line */
+}
+.tb-container {
+    margin-top: 100px;
+}
+
 
