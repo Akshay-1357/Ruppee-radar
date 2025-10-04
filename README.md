@@ -27,21 +27,9 @@ Python Flask, Jinja
 Getting Started
 Clone the repo
  
-## text
-git clone https://github.com/your-username/bud-jet.git
-cd bud-jet
-Install dependencies
-
-## text
-pip install flask
-Run the server
-
-## text
-python app.py
-View at http://localhost:5000
 
 # Folder Structure
-text
+
 ruppee radar/
 │-- static/
 │-- templates/
@@ -53,7 +41,7 @@ PRs welcome – use feature branches and clear commit messages.
 List your improvements in the PR description.
 
 # Authors
-Arun Roshan R
-Akshay V
+### Arun Roshan R
+### Akshay V
 
-Collaborator
+
