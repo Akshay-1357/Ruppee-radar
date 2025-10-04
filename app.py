@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask import jsonify
 
 app = Flask(__name__)
 
@@ -9,13 +10,15 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///budjet.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 categories = ['Food','Social Life', "Pets","Transport","Health","Education","Shopping","Bills & Fees","Gifts","Others"]
-sources = ['Investments','Salary','Savings','Others']
+sources = ['Investments 💼', 'Salary 💰', 'Savings 🏦', 'Others 🔧']
+
 
 # Models
 class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     amount = db.Column(db.Float, nullable=False)
+    date = db.Column(db.Date, default= datetime.utcnow,nullable=False)
 
     
 
@@ -42,8 +45,9 @@ def expense():
     if request.method == 'POST':
         category = request.form['category']
         amount = request.form['amount']
+        date = request.form['date']
         if category and amount:
-            new_expense = Expense(name=category, amount=float(amount))
+            new_expense = Expense(name=category, amount=float(amount),date= datetime.strptime(date, '%Y-%m-%d'))
             db.session.add(new_expense)
             db.session.commit()
             return redirect(url_for('expense'))
@@ -62,8 +66,23 @@ def add_income():
             db.session.add(new_income)
             db.session.commit()
             return redirect(url_for('add_income'))
-    all_income =  Income.query.order_by(Income.date.desc()).all()
+    all_income =  Income.query.order_by(Income.date.desc()).limit(5).all()
     return render_template('income.html', incomes=all_income , srcs = sources)
+
+
+
+@app.route('/income_data', methods=['GET'])
+def income_data():
+    all_income = Income.query.order_by(Income.date.desc() ).limit(5).all()
+    income_list = []
+    for inc in all_income:
+        income_list.append({
+            'source': inc.source,
+            'amount': inc.amount,
+            'date': inc.date.strftime('%Y-%m-%d')  # Format date as string
+        })
+    return jsonify(income_list)
+
 
 @app.route('/layout')
 def test_layout():
