@@ -1,40 +1,40 @@
-## Ruppee-Radar Web App
+# Ruppee-Radar Web App
 A simple and intuitive budget management tool to categorize your expenses, visualize spending, and track transactions in one place.
 
-## Features
+# Features
 Expense & Income Entry: Add, edit, and categorize transactions.
 
-# Category Emojis: See spending by category with visual highlights.
+## Category Emojis: See spending by category with visual highlights.
 
-# Recent Transactions: Shows the latest 5 records for quick review.
+## Recent Transactions: Shows the latest 5 records for quick review.
 
-# Responsive UI: Sidebar navigation, modern cards, Bootstrap-powered layout.
+## Responsive UI: Sidebar navigation, modern cards, Bootstrap-powered layout.
 
-# Data Visualization: Pie and trend charts (coming soon).
+## Data Visualization: Pie and trend charts (coming soon).
 
-## Tech Stack
-# Frontend: HTML, CSS, Bootstrap, JavaScript
+# Tech Stack
+## Frontend: HTML, CSS, Bootstrap, JavaScript
 
-# Backend: Python Flask, Jinja
+## Backend: Python Flask, Jinja
 
-# SQLite
+## SQLite
 Getting Started
 Clone the repo
  
-# text
+## text
 git clone https://github.com/your-username/bud-jet.git
 cd bud-jet
 Install dependencies
 
-# text
+## text
 pip install flask
 Run the server
 
-# text
+## text
 python app.py
 View at http://localhost:5000
 
-## Folder Structure
+# Folder Structure
 text
 ruppee radar/
 │-- static/
